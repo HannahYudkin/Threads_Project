@@ -108,6 +108,7 @@ green&white;,;09/15/17,   Gail Phelps   ;,;$30.52
 #------------------------------------------------
 
 
+
 daily_sales_replaced = daily_sales.replace(';,;', ':')
 
 daily_transactions = daily_sales_replaced.split(',')
@@ -117,6 +118,22 @@ daily_transactions_split = []
 for transactions in daily_transactions:
   daily_transactions_split.append(transactions.split(':'))
   
+transactions_clean = []
 
-print(daily_transactions_split)
+for transaction in daily_transactions_split:
+  transaction_clean = []
+  for item in transaction:
+    transaction_clean.append(item.strip(" "))
+    transactions_clean.append(transaction_clean)
+    
+    
+customers = []
+sales = []
+thread_sold = []
 
+for transaction in transactions_clean:
+  customers.append(transaction[0])
+  sales.append(transaction[1])
+  thread_sold.append(transaction[2])
+    
+print(customers)
